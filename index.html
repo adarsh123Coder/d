@@ -1,252 +1,143 @@
-<!DOCTYPE html>
 <html>
-<head>
-<title>Flappy Pixel Dost - Full Screen</title>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Work+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
 
-<style>
-* { box-sizing: border-box; }
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
-body {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: radial-gradient(circle, #0f0f1f, #000);
-    overflow: hidden;
-    font-family: monospace;
-}
-
-#game {
-    position: relative;
-    width: 100vw;
-    max-width: 420px;
-    height: 100vh;
-    max-height: 750px;
-    background: linear-gradient(#63c5ff, #2b7cff);
-    border: 6px solid cyan;
-    box-shadow: 0 0 40px cyan;
-    overflow: hidden;
-}
-
-/* PIXEL BIRD */
-#bird {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: yellow;
-    left: 70px;
-    top: 200px;
-    box-shadow: inset 0 0 0 3px orange;
-    image-rendering: pixelated;
-}
-
-/* PIPES */
-.pipe {
-    position: absolute;
-    width: 52px;
-    background: #1aff1a;
-    box-shadow: inset 0 0 0 4px #006400;
-}
-
-.pipe-top { top: 0; }
-.pipe-bottom { bottom: 0; }
-
-/* GROUND */
-#ground {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 45px;
-    background: repeating-linear-gradient(
-        90deg,
-        #c2b280 0px,
-        #c2b280 20px,
-        #a7986e 20px,
-        #a7986e 40px
-    );
-}
-
-/* SCORE */
-#score {
-    position: absolute;
-    top: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 42px;
-    color: white;
-    text-shadow: 3px 3px black;
-    z-index: 5;
-}
-
-/* START + GAMEOVER */
-#start, #gameover {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,.8);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-}
-
-button {
-    padding: 14px 26px;
-    font-size: 22px;
-    background: cyan;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-    font-weight: bold;
-    box-shadow: 0 0 15px cyan;
-}
-</style>
-</head>
-<body>
-
-<div id="game">
-    <div id="score">0</div>
-    <div id="bird"></div>
-    <div id="ground"></div>
-
-    <div id="start">
-        <h1>FLAPPY PIXEL</h1>
-        <p>Click ya Space Dabao</p>
-        <button onclick="goFullScreen(); startGame();">START</button>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col bg-white justify-between group/design-root overflow-x-hidden"
+      style='font-family: "Work Sans", "Noto Sans", sans-serif;'
+    >
+      <div>
+        <div class="flex items-center bg-white p-4 pb-2 justify-between">
+          <h2 class="text-[#111813] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Grocer</h2>
+          <div class="flex w-12 items-center justify-end">
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-[#111813] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0"
+            >
+              <div class="text-[#111813]" data-icon="ShoppingCart" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path
+                    d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="px-4 py-3">
+          <label class="flex flex-col min-w-40 h-12 w-full">
+            <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+              <div
+                class="text-[#608a6e] flex border-none bg-[#f0f5f1] items-center justify-center pl-4 rounded-l-lg border-r-0"
+                data-icon="MagnifyingGlass"
+                data-size="24px"
+                data-weight="regular"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                </svg>
+              </div>
+              <input
+                placeholder="Search for products"
+                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111813] focus:outline-0 focus:ring-0 border-none bg-[#f0f5f1] focus:border-none h-full placeholder:text-[#608a6e] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                value=""
+              />
+            </div>
+          </label>
+        </div>
+        <h2 class="text-[#111813] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Featured Products</h2>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+          <a class="flex flex-col gap-3 pb-3" href="product-detail.html">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2yo74Xz_5hS1rZEHDDAjAarNCM54YYR7pzSsNnwWAQ18C60JZIA3ltK_HReehFZcn4O9ta4Udv7CxsBT6Dw3KTRH48cnsPaQ2mffsCWBQ3CbbkC8_4KoFyBrKL4hP2fu4op4PlXLiFPYsTA9RaFkLu6NgMRNwvmf_yEC9DChnXqbXlKUJCROzzMor7FZIwYQ_CDHZcAsUUlzdRlx1vankqNAozbHyGA-B2SlVuJDSR8cq3-ItSdHWXJhmaQ0IJ4IKzu2v46CbUj4");'
+            ></div>
+            <div>
+              <p class="text-[#111813] text-base font-medium leading-normal">Fresh Apples</p>
+              <p class="text-[#608a6e] text-sm font-normal leading-normal">$2.99/lb</p>
+            </div>
+          </a>
+          <a class="flex flex-col gap-3 pb-3" href="product-detail.html">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAP_rwx-Qo5OkmdyGbIQSmy_a_4zMGFbDTPHhoUZgxZdz-vS5U8bmFCfrcXwNnurC97nfRaFiFrX6TcmL4n5aiC34mPMjKulJYIeHjMEYHFub7_XDGLCpRCdMvHeIwN527wzs5K4IsUhs_NpoOjM7zIm0XXR6cQvBJ9M7yha5A6KqmHgobkf50fu3n0LJjHX7dv-ltPBKDq1QrSJBXL5Ug-WNU5jkn-Kcbo3W2TxWE4FUv8CPZDXdBOHWri6YzGdestGJwlW8pbKoo");'
+            ></div>
+            <div>
+              <p class="text-[#111813] text-base font-medium leading-normal">Organic Milk</p>
+              <p class="text-[#608a6e] text-sm font-normal leading-normal">$3.49/gal</p>
+            </div>
+          </div>
+          <a class="flex flex-col gap-3 pb-3" href="product-detail.html">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBL5G0Ubxck4OkIuO2dlgmggq__PBpgFAOFhZEGYcJoxX6QPaaVIQc90mhxfhJ2bE_8bpCg6g0J5pEtZipvtLXZ0FvO6XU00vLf4vHYU-BhjAlAnphivHFOFuzH8UWhXy0QG86KsGIwdSP7_gurgiuA2BgG85RLp3qIjBIfhfvMt_bDxHi5VlO-fx6wh-1b-fOPKCPabhro7A4N7sXPo_jn9W1WOxhi75Bjx9LELZwwXdGX3OYecLQS7e3o0xDADRox1Bnsa3sw7xg");'
+            ></div>
+            <div>
+              <p class="text-[#111813] text-base font-medium leading-normal">Whole Wheat Bread</p>
+              <p class="text-[#608a6e] text-sm font-normal leading-normal">$2.79/loaf</p>
+            </div>
+          </div>
+          <a class="flex flex-col gap-3 pb-3" href="product-detail.html">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCiHEEOz41__ZCcWmAe88xDQ7Dx16tIP8832GE9ccKrcqQ0-eaY0XDFLVYlmAkOMgY4YKCXY4eZIn94S3e-s2L3nF1M3rr02yriGqbdnTNnoJWuuB3IG7T7NBfOE43aT70Y-LXgetuyhcGD7I4dQcHnFh-P2UYaj913e3geqJZQTJqjryJahosRHSFkOjAp6UZPGLLLR-6r9rHkIbl5H9hOF0s9ne6eh2aYpe-iMY28eHqCRdDrKLFX-kueeRiD-dSFOSrZ0uhfByc");'
+            ></div>
+            <div>
+              <p class="text-[#111813] text-base font-medium leading-normal">Free-Range Eggs</p>
+              <p class="text-[#608a6e] text-sm font-normal leading-normal">$4.99/dozen</p>
+            </div>
+          </div>
+          <a class="flex flex-col gap-3 pb-3" href="product-detail.html">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBaYkmSAV2MONncj8sgyZ3b1PaN4jCaKTIrgRW1jwB6Obrv1jq5cMx1xwIiJdYDsHPT0lO0Au36QfXHix5aJo_r5YE3_1QQ_jjTbEN7Rvnn3i4uBOGrbiu9-30rDma1Xt15dfMZDuVcODb1MR50fwB6-ffF4B13JbH3H1-WW9Yeuabq85L1PjEo3PErMF8TwYYN3OVirEiSf8OXGbfWMu8VV368fMVtwor5v-3e5netyVTJQQYMI5E0mJJ8yFFfJQsIl7s--js2i54");'
+            ></div>
+            <div>
+              <p class="text-[#111813] text-base font-medium leading-normal">Avocado</p>
+              <p class="text-[#608a6e] text-sm font-normal leading-normal">$1.29/each</p>
+            </div>
+          </div>
+          <a class="flex flex-col gap-3 pb-3" href="product-detail.html">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBC6J3sfQEEZOirFg9w8jBs4E2mqwJh5Z3cG4Lmg1JmbHHhbAyA1A4uNAIcpWfDV5172cBpM4czYe2Y4G5fVP1leTto6cwseJCpPQJIf27J0mnAdDPRUxt6FQp8OfcNjoY6rIIccDiT9G7y4_ju0KbljD3_Qa8KsT17VAfoFEpJd6FmCmy9rYkwcqL7E3mn-H94BwI_6GADKKL98Uc8cnEKwk0s2w82y8TrWjeQJax902JUVXt0C02-aTwLaidXBwnBbfMPpDdyY_I");'
+            ></div>
+            <div>
+              <p class="text-[#111813] text-base font-medium leading-normal">Banana</p>
+              <p class="text-[#608a6e] text-sm font-normal leading-normal">$0.59/each</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="flex justify-end overflow-hidden px-5 pb-5">
+          <a
+            href="cart.html"
+            class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-5 bg-[#0df259] text-[#111813] text-base font-bold leading-normal tracking-[0.015em] min-w-0 gap-4 pl-4 pr-6"
+          >
+            <div class="text-[#111813]" data-icon="ShoppingCart" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"
+                ></path>
+              </svg>
+            </div>
+            <span class="truncate">View Cart (3)</span>
+          </button>
+        </div>
+        <div class="h-5 bg-white"></div>
+      </div>
     </div>
-
-    <div id="gameover" style="display:none;">
-        <h1>GAME OVER</h1>
-        <p>Score: <span id="finalScore">0</span></p>
-        <button onclick="location.reload()">RESTART</button>
-    </div>
-</div>
-
-<script>
-const game = document.getElementById("game");
-const bird = document.getElementById("bird");
-const scoreText = document.getElementById("score");
-const start = document.getElementById("start");
-const over = document.getElementById("gameover");
-const finalScore = document.getElementById("finalScore");
-
-let birdY = 200;
-let velocity = 0;
-let gravity = 0.45;
-let jump = -9;
-let score = 0;
-let loop, pipeLoop;
-let isOver = true;
-
-const birdX = 70;
-const birdW = 20;
-const birdH = 20;
-const groundH = 45;
-const gameH = game.clientHeight;
-
-function startGame() {
-    isOver = false;
-    start.style.display = "none";
-    over.style.display = "none";
-    document.querySelectorAll(".pipe").forEach(p => p.remove());
-
-    score = 0;
-    velocity = 0;
-    birdY = 200;
-    scoreText.textContent = 0;
-
-    loop = setInterval(update, 20);
-    pipeLoop = setInterval(makePipe, 1500);
-
-    window.addEventListener("keydown", flap);
-    game.addEventListener("click", flap);
-}
-
-function flap(e) {
-    if (isOver) return;
-    if (e.type === "click" || e.code === "Space") {
-        velocity = jump;
-    }
-}
-
-function update() {
-    velocity += gravity;
-    birdY += velocity;
-    bird.style.top = birdY + "px";
-    bird.style.transform = `rotate(${velocity * 5}deg)`;
-
-    if (birdY + birdH >= gameH - groundH) endGame();
-    if (birdY < 0) birdY = 0;
-
-    document.querySelectorAll(".pipe").forEach(pipe => {
-        let x = pipe.offsetLeft - 3;
-        pipe.style.left = x + "px";
-
-        if (x + 52 < 0) pipe.remove();
-
-        // ✅ EXACT TOUCH COLLISION
-        let birdBox = { x: birdX, y: birdY, w: birdW, h: birdH };
-        let pipeBox = {
-            x: x,
-            y: pipe.classList.contains("pipe-top") ? 0 : gameH - pipe.offsetHeight - groundH,
-            w: 52,
-            h: pipe.offsetHeight
-        };
-
-        let hit =
-            birdBox.x < pipeBox.x + pipeBox.w &&
-            birdBox.x + birdBox.w > pipeBox.x &&
-            birdBox.y < pipeBox.y + pipeBox.h &&
-            birdBox.y + birdBox.h > pipeBox.y;
-
-        if (hit) endGame();
-
-        if (pipe.classList.contains("pipe-top") && x + 52 < birdX && !pipe.scored) {
-            pipe.scored = true;
-            score++;
-            scoreText.textContent = score;
-        }
-    });
-}
-
-function makePipe() {
-    const gap = 140;
-    const topHeight = Math.random() * 220 + 40;
-    const bottomHeight = gameH - topHeight - gap - groundH;
-
-    const top = document.createElement("div");
-    top.className = "pipe pipe-top";
-    top.style.height = topHeight + "px";
-    top.style.left = game.clientWidth + "px";
-
-    const bottom = document.createElement("div");
-    bottom.className = "pipe pipe-bottom";
-    bottom.style.height = bottomHeight + "px";
-    bottom.style.left = game.clientWidth + "px";
-
-    game.appendChild(top);
-    game.appendChild(bottom);
-}
-function goFullScreen() {
-    const el = document.documentElement;
-    if (el.requestFullscreen) el.requestFullscreen();
-    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-    else if (el.msRequestFullscreen) el.msRequestFullscreen();
-}
-
-
-function endGame() {
-    if (isOver) return;
-    isOver = true;
-    clearInterval(loop);
-    clearInterval(pipeLoop);
-    finalScore.textContent = score;
-    over.style.display = "flex";
-}
-</script>
-
-</body>
+  </body>
 </html>
